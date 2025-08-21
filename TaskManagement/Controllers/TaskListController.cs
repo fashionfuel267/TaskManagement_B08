@@ -15,28 +15,10 @@ public class TaskListController : Controller
     }
     public IActionResult Index()
     {
-        var tasks = _dbContext.Tasks.ToList();
-        return View(tasks);
+        
+        return View( );
     }
-    public IActionResult Create()
-    {
-        return View();
-    }
-    [HttpPost]
-    public IActionResult Create(TaskList task)
-    {
-        if (ModelState.IsValid)
-        {
-            _dbContext.Tasks.Add(task);
-            if (_dbContext.SaveChanges() > 0)
-            {
-                return RedirectToAction("Index");
-            }
-            ModelState.AddModelError("", "Failed to create task. Please try again.");
-        }
-        return View(task);
-    }
-
+   
     [HttpGet]
     public IActionResult Get()
     {
