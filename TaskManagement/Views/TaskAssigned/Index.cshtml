@@ -20,11 +20,11 @@
     @foreach (var item in Model)
     {
         <tr>
-            <td>@item.TaskId</td>
-            <td>@item.UserId</td>
-            <td>@item.AssignedDate.ToString("dd/mm/yyyy")</td>
-            <td>@item.DueDate.ToString("dd/mm/yyyy")</td>
-            <td>@item.SubmitDate.ToString("dd/mm/yyyy")</td>
+            <td>@item.Task.Title</td>
+            <td>@item.User.Name</td>
+            <td>@item.AssignedDate.ToString("dd/MM/yyyy")</td>
+            <td>@item.DueDate.ToString("dd/MM/yyyy")</td>
+            <td>@item.SubmitDate.ToString("dd/MM/yyyy")</td>
             <td>@item.Status</td>
             <td>@item.Remarks</td>
             <td>

@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.AspNetCore.Identity;
+using System.ComponentModel.DataAnnotations;
 
 namespace TaskManagement.Models;
 
@@ -9,5 +10,6 @@ public class User
     public string Name { get; set; }
     [StringLength(11, ErrorMessage = "Phone no must be 11 characters.")]
     public string PhoneNo { get; set; }
-
+    [EmailAddress(ErrorMessage = "Invalid Email Address")]
+    public string Email { get; set; }
 }

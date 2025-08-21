@@ -1,14 +1,17 @@
 using Microsoft.EntityFrameworkCore;
 using TaskManagement.Data;
+using Microsoft.AspNetCore.Identity;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-
+builder.Services.AddRazorPages();
 var connectionString = builder.Configuration.GetConnectionString("Default");
 builder.Services.AddDbContext<TaskDbContext>(options =>
     options.UseSqlServer(connectionString));
+
+builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<TaskDbContext>();
 
 var app = builder.Build();
 
@@ -22,7 +25,8 @@ if (!app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseRouting();
-
+app.MapRazorPages();
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapStaticAssets();
