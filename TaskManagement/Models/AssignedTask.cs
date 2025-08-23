@@ -19,7 +19,7 @@ public class AssignedTask
     [ForeignKey("User")]
     public int UserId { get; set; }
     [NotMapped]
-    public List<User> Users { get; set; } = new List<User>();
+    public List<Employee> Users { get; set; } = new List<Employee>();
     [NotMapped]
     public List<TaskList> Tasklist { get; set; } = new List<TaskList>();
     [DataType(DataType.Date)]
@@ -35,7 +35,7 @@ public class AssignedTask
     [ValidateNever]
     public TaskList Task { get; set; } = null!;
     [ValidateNever]
-    public User User { get; set; } = null!;
+    public Employee User { get; set; } = null!;
 
 
 }

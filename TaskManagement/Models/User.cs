@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace TaskManagement.Models;
 
-public class User
+public class Employee
 {
     public int Id { get; set; }
     [StringLength(25, ErrorMessage ="Name must be less than or equal 25 characters.")]

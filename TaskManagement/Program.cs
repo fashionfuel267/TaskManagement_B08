@@ -11,7 +11,7 @@ var connectionString = builder.Configuration.GetConnectionString("Default");
 builder.Services.AddDbContext<TaskDbContext>(options =>
     options.UseSqlServer(connectionString));
 
-builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<TaskDbContext>();
+builder.Services.AddIdentity<IdentityUser,IdentityRole>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<TaskDbContext>();
 
 var app = builder.Build();
 

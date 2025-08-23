@@ -1,10 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 using TaskManagement.Data;
 using TaskManagement.Models;
 
 namespace TaskManagement.Controllers;
-
+[Authorize(Roles = "Admin,Super Admin")]
 public class TaskListController : Controller
 {
     private readonly TaskDbContext _dbContext;

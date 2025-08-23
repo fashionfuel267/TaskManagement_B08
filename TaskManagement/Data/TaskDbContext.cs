@@ -11,7 +11,7 @@ public class TaskDbContext:IdentityDbContext
 
     }
     public DbSet<TaskList> Tasks { get; set; }
-    public DbSet<User> Users { get; set; }
+    public DbSet<Employee> Employees { get; set; }
     public DbSet<AssignedTask> AssignedTasks { get; set; }
 
 }

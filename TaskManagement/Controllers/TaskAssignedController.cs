@@ -1,10 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using TaskManagement.Data;
 using TaskManagement.Models;
 
 namespace TaskManagement.Controllers;
-
+[Authorize(Roles = "Admin,Super Admin")]
 public class TaskAssignedController : Controller
 {
     private readonly TaskDbContext _dbContext;
@@ -28,7 +29,7 @@ public class TaskAssignedController : Controller
         {
             AssignedDate = DateTime.Now,
             DueDate = DateTime.Now.AddDays(7), // Default due date is 7 days from now
-            Users = _dbContext.Users.OrderBy(u=>u.Name).ToList(),
+            Users = _dbContext.Employees.OrderBy(u=>u.Name).ToList(),
             Tasklist = _dbContext.Tasks.OrderBy(t=>t.Title).ToList()
         };
         return View(model);
@@ -74,7 +75,7 @@ public class TaskAssignedController : Controller
     .Select(e => e.ErrorMessage));
             ModelState.AddModelError(" ", message);
         }
-        assignedTask.Users = _dbContext.Users.OrderBy(u => u.Name).ToList();
+        assignedTask.Users = _dbContext.Employees.OrderBy(u => u.Name).ToList();
         assignedTask.Tasklist = _dbContext.Tasks.OrderBy(t => t.Title).ToList();
         return View(assignedTask);
     }
