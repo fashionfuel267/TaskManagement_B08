@@ -37,7 +37,7 @@ public class TaskListController : Controller
         }
         return View(task);
     }
-
+   
     [HttpGet]
     public IActionResult Get()
     {
